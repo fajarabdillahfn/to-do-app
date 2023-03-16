@@ -16,6 +16,10 @@ func OpenDB() *gorm.DB {
 	password := os.Getenv("MYSQL_PASSWORD")
 	dbname := os.Getenv("MYSQL_DBNAME")
 
+	if port == "" {
+		port = "3306"
+	}
+
 	sqlInfo := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		user, password, host, port, dbname)
 
