@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/fajarabdillahfn/to-do-app/internal/model"
+	"github.com/fajarabdillahfn/to-do-app/common/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
