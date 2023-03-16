@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DBNAME}
+      - MYSQL_ROOT_PASSWORD=password
+    env_file:
+      - .env
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db-data/mysql/:/var/lib/mysql
+  todo-app:
+    build:
+      context: .
+    ports:
+      - '3030:3030'
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - .env
+    expose:
+      - '3030'
